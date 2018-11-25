@@ -44,7 +44,7 @@ services:
       # - judger_debug=1
   
   oj-backend:
-    image: sha256:c283c543dd075df5ded1b78af5665f14946df49764e879aae734a6853d1c4d36
+    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_backend
     container_name: oj-backend
     restart: always
     depends_on:
@@ -52,6 +52,7 @@ services:
       - oj-postgres
       - judge-server
     volumes:
+      - /root/dist:/app/dist
       - $PWD/data/backend:/data
     environment:
       - POSTGRES_DB=onlinejudge
